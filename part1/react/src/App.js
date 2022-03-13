@@ -1,49 +1,7 @@
 /**
- * Renders the name of the course
+ * Renders the entire app
  */
-const Header = (props) => {
-  return (
-    <h1>{props.course.name}</h1>
-  );
-}
-
-/**
- * Renders a course and its corresponding number of exercises
- */
-const Part = (props) => {
-  return (
-    <p>
-      {props.name} {props.exercises}
-    </p>
-  );
-}
-
-/**
- * Renders the course parts and the corresponding numbers of exercises
- */
-const Content = (props) => {
-  return (
-    <div>
-      <Part name={props.course.parts[0].name} exercises={props.course.parts[0].exercises} />
-      <Part name={props.course.parts[1].name} exercises={props.course.parts[1].exercises} />
-      <Part name={props.course.parts[2].name} exercises={props.course.parts[2].exercises} />
-    </div>
-  );
-}
-
-/**
- * Renders the total number of exercises
- */
-const Total = (props) => {
-  const total = props.course.parts.reduce((previousValue, currPart) => (
-                                            previousValue + currPart.exercises
-                                          ), 0);
-  return (
-    <p>Number of exercises {total}</p>
-  );
-}
-
-const App = () => {
+function App() {
   const course = {
     name: 'Half Stack application development',
     parts: [
@@ -68,6 +26,51 @@ const App = () => {
       <Content course={course} />
       <Total course={course} />
     </div>
+  );
+}
+
+/**
+ * Renders the name of the course
+ */
+ function Header(props) {
+  return (
+    <h1>{props.course.name}</h1>
+  );
+}
+
+/**
+ * Renders the course parts and the corresponding numbers of exercises
+ */
+ function Content(props) {
+  return (
+    <div>
+      <Part name={props.course.parts[0].name} exercises={props.course.parts[0].exercises} />
+      <Part name={props.course.parts[1].name} exercises={props.course.parts[1].exercises} />
+      <Part name={props.course.parts[2].name} exercises={props.course.parts[2].exercises} />
+    </div>
+  );
+}
+
+/**
+ * Renders a course and its corresponding number of exercises
+ */
+ function Part(props) {
+  return (
+    <p>
+      {props.name} {props.exercises}
+    </p>
+  );
+}
+
+/**
+ * Renders the total number of exercises
+ */
+ function Total(props) {
+  const total = props.course.parts.reduce((previousValue, currPart) => (
+                                            previousValue + currPart.exercises
+                                          ), 0);
+  return (
+    <p>Number of exercises {total}</p>
   );
 }
 
